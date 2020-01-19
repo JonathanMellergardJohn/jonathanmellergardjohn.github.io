@@ -9,13 +9,21 @@
 
   <body>
     <div class="quizFrame">
-        <div class="quizFrameHead"></div>
-        <div class="questionFrame">
-          <label for="guess" class="questionField"></label>
-          <input type="text" class="guessField" name="guess" autocomplete="off" autofocus>
+        <div class="quizFrameHead">
+          <h1>Diagnos - Multiplikationstabell</h1>
+        </div>
+        <div class="topArea">
+          <div class="questionContainer">
+            <label for="guess" class="questionField"></label>
+            <input type="text" class="guessField" name="guess" autocomplete="off" autofocus>
+          </div>
+        </div> 
+        <div class="bottomArea">
           <button type="submit" class="guessButton" 
           onclick="continueQuiz()">nästa</button>
         </div>
+          
+        
     </div>
     <p class="guessCorrectionMessage"></p>
 
