@@ -1,12 +1,15 @@
 body {
   background-color: #7aabc3;
 }
-
+.guessCorrectionMessage {
+  margin: auto;
+  text-align: center;
+  font-size: 28px;
+}
 .quizFrame {
-
   margin: 100px auto;
   width: 500px;
-  height: 300px;
+  height: 400px;
   box-shadow: 10px 10px 10px;
   
 }
@@ -15,31 +18,43 @@ body {
   background-color: #ccc756; 
   display: flex;
   justify-content: center;
-  align-items: ;
 }
 .topArea {
-  height: 115px;
+  height: 330px;
   background-color: #98e3dd;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
-.bottomArea {
-  height: 115px;
-  background-color: #98e3dd;
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
 }
 .questionField {
   font-size: 36px;
 }
-.guessField {
+.guessField { 
+  background-color: #a8dfda;
   font-size: 36px;
   width: 72px;
 }
-.guessButton {
+.submitGuessButton {
   font-size: 36px;
   padding: 6px;
   border-radius: 10px;
+  border: 1px solid black;
+  background-color: #ccc756;
+}
+.startButton {
+  font-size: 45px;
+  background-color: #ccc756;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+#C1, #C2, #C3, #C4, #C5, #C6, #C7 {
+  text-align: right;
+}
+#B1, #B2, #B3, #B4, #B5, #B6, #B7 {
+  text-align: center;
+}
+table {
+  width: 60%;
+  font-size: large;
 }
