@@ -48,13 +48,9 @@ body {
   border-radius: 10px;
   border: 1px solid black;
 }
-#C1, #C2, #C3, #C4, #C5, #C6, #C7 {
-  text-align: right;
-}
-#B1, #B2, #B3, #B4, #B5, #B6, #B7 {
-  text-align: center;
-}
+
 table {
   width: 60%;
   font-size: large;
+  color: black;
 }

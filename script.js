@@ -8,12 +8,45 @@ let allQuestions = {
 };
 
 let wrongGuesses = {};
-
+//variable below is very ugly, better if it could be scoped or added to object allQuestions
+let usedQuizQuestionTypes = Object.keys(allQuestions);
 let questionSetName = "";
 let questionIndex = 0;
 let question = "";
 let input = document.querySelector('.guessField');
 let startTime = Date.now();
+
+function removeElement(elementId) {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+}
+
+function addElement(parentId, elementTag, elementId, html) {
+    // Adds an element to the document
+    var p = document.getElementById(parentId);
+    var newElement = document.createElement(elementTag);
+    newElement.setAttribute('id', elementId);
+    newElement.innerHTML = html;
+    p.appendChild(newElement);
+}
+
+function showTable() {
+    addElement("topArea", "h2", "tableHeading", "RESULTAT");
+    addElement("topArea", "table", "results", "");
+    var i = 0;
+    while (i < usedQuizQuestionTypes.length) {
+        addElement("results", "tr", "row" + i, "");
+        var questionType = usedQuizQuestionTypes[i]
+        addElement("row" + i, "td", "", questionType + ":ans");
+        var numOfWrongAnswers = 0;
+        if (wrongGuesses.hasOwnProperty(questionType) === true) {
+            numOfWrongAnswers = wrongGuesses[questionType].length;
+        }
+        addElement("row" + i, "td", "", numOfWrongAnswers + " fel");
+        i++;
+    }
+}
 
 function isEmpty(obj) {
     for(var key in obj) {
@@ -35,7 +68,6 @@ function countWrongAnswers(obj) {
 
 function checkEndQuiz(_allQuestions, _wrongGuesses) {
     let gameIsDone = false;
-
     if (isEmpty(_allQuestions)) {
         gameIsDone = true;
         let textResponse = "";
@@ -49,11 +81,10 @@ function checkEndQuiz(_allQuestions, _wrongGuesses) {
         document.querySelector('.guessCorrectionMessage').innerHTML = textResponse + timeUsed;
         document.getElementById("questionContainer").setAttribute("hidden", "true");
         document.getElementById("submitGuessButton").setAttribute("hidden", "true");
-        document.getElementById("results").removeAttribute("hidden");
-        document.getElementById("tableHeading").removeAttribute("hidden");
-    }  
-    
-    return gameIsDone; 
+        showTable()
+        }  
+    return gameIsDone;
+
 }
 
 function selectQuestion(obj) {
@@ -135,16 +166,3 @@ function continueQuiz() {
     }
 }
 
-function removeElement(elementId) {
-    // Removes an element from the document
-    var element = document.getElementById(elementId);
-    element.parentNode.removeChild(element);
-}
-
-function produceResults(questions) {
-    //Function imputs results into an existing html-table. 
-    //Function can be improved to also generate the html-table.
-    let arrayOfQuestions = Object.keys(questions);
-    let numberOfQuestionTypes = arrayOfQuestions.length
-    let questionType = arrayOfQuestions[0]
-}
